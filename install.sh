@@ -10,5 +10,5 @@ mkdir -p ~/.config/tmux/plugins/
 
 ln -s -T $PWD/nvim/init.lua ~/.config/nvim/init.lua
 ln -s -T $PWD/tmux/tmux.conf ~/.config/tmux/tmux.conf
-# 
-# git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
+ 
+git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
