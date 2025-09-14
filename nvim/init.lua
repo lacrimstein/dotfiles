@@ -116,13 +116,12 @@ require( "lazy" ).setup( {
         version = "1.*",
         opts = {
             sources = { 
-                default = { 'lsp', 'path', 'snippets', 'buffer' },
+                default = { 'lsp', 'path' },
             },
             signature = {
                 enabled = true,
             },
             fuzzy = {
-                -- implementation = "prefer_rust",
                 implementation = "lua",
             },
             completion = {
