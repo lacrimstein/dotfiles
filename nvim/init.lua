@@ -20,13 +20,18 @@ vim.keymap.set( 'n', '<F1>', '<Cmd>tabnew<CR>', { silent=true} )
 
 -- LSPs
 vim.lsp.config[ 'clangd' ] = {
-    cmd = { 'clangd' },
+    cmd = {
+        'clangd',
+        '--compile-commands-dir', '/src',
+        '--background-index',
+        '--background-index-priority', 'normal',
+    },
     filetypes = { 'c', 'cpp', 'h', 'hpp' },
     root_markers = { { '.git', 'compile_commands.json' } },
 }
 
-vim.lsp.config[ 'jedi-language-server' ] = {
-    cmd = { '/usr/bin/jedi-language-server' },
+vim.lsp.config[ 'python-lsp-server' ] = {
+    cmd = { 'pylsp' },
     filetypes = { 'python' },
     root_markers = { { '.git' } },
     settings = {
@@ -34,7 +39,7 @@ vim.lsp.config[ 'jedi-language-server' ] = {
 }
 
 vim.lsp.enable( 'clangd' )
-vim.lsp.enable( 'jedi-language-server' )
+vim.lsp.enable( 'python-lsp-server' )
 
 ---- PLUGINS ----
 -- Bootstrap lazy.nvim
