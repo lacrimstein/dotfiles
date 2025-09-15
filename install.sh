@@ -3,7 +3,7 @@
 # This script symlinks the dotfiles into their respective locations in $HOME/.config
 # Also downloads and installs TPM (Tmux Plugin Manager)
 
-# On first run, press <C-a>I for TPM to install plugins specified in tmux.conf
+# On first run, press <C-b>I for TPM to install plugins specified in tmux.conf
 
 mkdir -p ~/.config/nvim/
 mkdir -p ~/.config/tmux/plugins/
