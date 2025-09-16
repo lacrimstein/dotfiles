@@ -143,5 +143,22 @@ require( "lazy" ).setup( {
             vim.keymap.set( 'n', 'gD', function() MiniExtra.pickers.lsp( { scope='definition' } ) end )
         end,
     },
+    {
+        "hedyhli/outline.nvim",
+        init = function()
+            require( "outline" ).setup( {
+                outline_window = {
+                    width = 20,
+                },
+                outline_items = {
+                    show_symbol_details = false,
+                },
+                symbol_folding = {
+                    autofold_depth = 2,
+                },
+            } )
+            vim.keymap.set( 'n', '<c-t>', "<cmd>Outline<cr>", { silent=true } )
+        end
+    },
 } )
 
