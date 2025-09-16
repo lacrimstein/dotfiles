@@ -8,8 +8,7 @@ vim.o.shiftwidth = 4
 vim.o.tabstop = 4
 
 -- Keymap
--- vim.keymap.set( 'n', '<C-d>', ':Neotree toggle<CR>' )
-vim.keymap.set( 'n', '<C-d>', ':Telescope find_files<CR>' )
+vim.keymap.set( 'n', '<C-d>', ':Pick explorer<CR>', { silent=true } )
 vim.keymap.set( 'n', '<C-j>', '<C-w>j' )
 vim.keymap.set( 'n', '<C-k>', '<C-w>k' )
 vim.keymap.set( 'n', '<C-h>', '<C-w>h' )
@@ -78,17 +77,6 @@ require( "lazy" ).setup( {
             vim.cmd( 'highlight Normal guibg=NONE ctermbg=NONE' )
         end,
     },
-    -- {
-    --     "nvim-neo-tree/neo-tree.nvim",
-    --     branch = "v3.x",
-    --     dependencies = {
-    --         "nvim-lua/plenary.nvim",
-    --         "MunifTanjim/nui.nvim",
-    --         "nvim-tree/nvim-web-devicons",
-    --     },
-    --     lazy = false,
-    --     opts = {},
-    -- },
     {
         "nvim-lualine/lualine.nvim",
         dependencies = {
@@ -107,24 +95,6 @@ require( "lazy" ).setup( {
                 }
             },
         }
-    },
-    {
-        'nvim-telescope/telescope.nvim',
-        branch = '0.1.x',
-        dependencies = {
-            'nvim-lua/plenary.nvim',
-        },
-        opts = {
-            defaults = {
-                sorting_strategy = "ascending",
-                layout_strategy = 'horizontal',
-                layout_config = {
-                    horizontal = {
-                        prompt_position = 'top'
-                    }
-                }
-            }
-        },
     },
     {
         "saghen/blink.cmp",
@@ -163,6 +133,15 @@ require( "lazy" ).setup( {
           { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
           { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
         },
+    },
+    {
+        "nvim-mini/mini.nvim",
+        version = false,
+        init = function()
+            require( "mini.pick" ).setup()
+            require( "mini.extra" ).setup()
+            vim.keymap.set( 'n', 'gD', function() MiniExtra.pickers.lsp( { scope='definition' } ) end )
+        end,
     },
 } )
 
