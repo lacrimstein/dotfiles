@@ -160,5 +160,8 @@ require( "lazy" ).setup( {
             vim.keymap.set( 'n', '<c-t>', "<cmd>Outline<cr>", { silent=true } )
         end
     },
+    {
+        "vim-scripts/a.vim",
+    },
 } )
 
