@@ -18,6 +18,16 @@ vim.keymap.set( 'n', '<Tab>', '<Cmd>tabnext<CR>', { silent=true} )
 vim.keymap.set( 'n', '<S-Tab>', '<Cmd>tabprev<CR>', { silent=true} )
 vim.keymap.set( 'n', '<F1>', '<Cmd>tabnew<CR>', { silent=true} )
 
+vim.diagnostic.config( {
+    virtual_text = true,
+    signs = {
+        text = {
+            [ vim.diagnostic.severity.ERROR ] = "󰅙",
+            [ vim.diagnostic.severity.WARN ] = "",
+        }
+    }
+} )
+
 -- LSPs
 vim.lsp.config[ 'clangd' ] = {
     cmd = {
@@ -153,6 +163,6 @@ require( "lazy" ).setup( {
           { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
           { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
         },
-    }
+    },
 } )
 
