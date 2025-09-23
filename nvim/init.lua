@@ -47,8 +47,14 @@ vim.lsp.config[ 'python-lsp-server' ] = {
     }
 }
 
+vim.lsp.config[ 'rust-analyzer' ] = {
+    cmd = { 'rust-analyzer' },
+    filetypes = { 'rust' },
+}
+
 vim.lsp.enable( 'clangd' )
 vim.lsp.enable( 'python-lsp-server' )
+vim.lsp.enable( 'rust-analyzer' )
 
 ---- PLUGINS ----
 -- Bootstrap lazy.nvim
@@ -107,7 +113,7 @@ require( "lazy" ).setup( {
                 enabled = true,
             },
             fuzzy = {
-                implementation = "lua",
+                implementation = "rust",
             },
             completion = {
                 documentation = {
