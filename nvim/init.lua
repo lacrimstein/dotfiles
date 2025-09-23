@@ -27,16 +27,21 @@ vim.diagnostic.config( {
     }
 } )
 
+-- Arista-specific
+vim.filetype.add( { extension = { tin = 'cpp', itin = 'cpp' } } )
+------------------
+
 -- LSPs
 vim.lsp.config[ 'clangd' ] = {
     cmd = {
         'clangd',
         '--compile-commands-dir', '/src',
         '--background-index',
+        '-j', '96',
         '--background-index-priority', 'normal',
+        '--pch-storage', 'memory',
     },
     filetypes = { 'c', 'cpp', 'h', 'hpp' },
-    root_markers = { { '.git', 'compile_commands.json' } },
 }
 
 vim.lsp.config[ 'python-lsp-server' ] = {
@@ -91,15 +96,27 @@ require( "lazy" ).setup( {
         opts = {
             options = {
                 theme = "gruvbox",
+                always_divide_middle = false,
             },
             tabline = {
                 lualine_a = { 
                     {
                         'tabs',
                         mode = 1,
+                        max_length = vim.o.columns - 3,
                     }
                 }
             },
+            sections = {
+                lualine_x = {
+                    {
+                        'lsp_status',
+                    },
+                    {
+                        'filetype',
+                    }
+                }
+            }
         }
     },
     {
@@ -169,5 +186,8 @@ require( "lazy" ).setup( {
     {
         "vim-scripts/a.vim",
     },
+    {
+        "tpope/vim-fugitive",
+    }
 } )
 
